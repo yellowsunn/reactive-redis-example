@@ -1,0 +1,11 @@
+spring:
+  redis:
+    client-type: lettuce
+
+---
+spring.config.activate.on-profile: local, test
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
