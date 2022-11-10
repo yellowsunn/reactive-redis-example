@@ -17,10 +17,15 @@ class PhotoController(
 ) {
     private val logger: Logger = LoggerFactory.getLogger(PhotoController::class.java)
 
-    @GetMapping("/photos/{id}")
-    fun test(@PathVariable id: Long): Mono<ResponseEntity<Photo>> {
-        return photoService.getPhoto(id)
+    @GetMapping("/photos/{id}/reactor")
+    fun getPhotoByReactor(@PathVariable id: Long): Mono<ResponseEntity<Photo>> {
+        return photoService.getPhotoByReactor(id)
             .map { ResponseEntity(it, HttpStatus.OK) }
             .doOnError { e -> logger.error("message={}", e.message, e) }
+    }
+
+    @GetMapping("/photos/{id}/coroutine")
+    suspend fun getPhotoByCoroutine(@PathVariable id: Long): ResponseEntity<Photo> {
+        return ResponseEntity(photoService.getPhotoByCoroutine(id), HttpStatus.OK)
     }
 }
