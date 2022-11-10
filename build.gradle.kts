@@ -22,6 +22,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("io.netty:netty-resolver-dns-native-macos:4.1.84.Final:osx-aarch_64")
 
     implementation("it.ozimov:embedded-redis:0.7.3") {
         exclude("org.slf4j", "slf4j-simple")
